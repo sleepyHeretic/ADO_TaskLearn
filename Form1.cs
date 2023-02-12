@@ -132,5 +132,31 @@ namespace ADO_TaskLearn
             }
             
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    data.Tables.Clear();
+                    adapter = new SqlDataAdapter ("select * from Students order by LastName desc ",connection);
+                    adapter.Fill(data);
+                    dataGridView1.DataSource = data.Tables[0];
+                    break;
+                case 1:
+                    data.Tables.Clear();
+                    adapter = new SqlDataAdapter("select * from Students order by LastName ", connection);
+                    adapter.Fill(data);
+                    dataGridView1.DataSource = data.Tables[0];
+                    break;
+                case 2:
+                    data.Tables.Clear();
+                    adapter = new SqlDataAdapter("select * from Students where Id>3 ", connection);
+                    adapter.Fill(data);
+                    dataGridView1.DataSource = data.Tables[0];
+                    break;                
+            }
+        }
     }
 }
